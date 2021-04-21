@@ -1,4 +1,6 @@
-package ie;
+package ie.tudublin;
+
+import processing.data.TableRow;
 
 public class Note {
     private char note;
@@ -28,5 +30,8 @@ public class Note {
     public Note(char note, int duration) {
         this.note = note;
         this.duration = duration;
+    }
+
+    public Note(int i) {
     }
 }
