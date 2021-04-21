@@ -1,11 +1,8 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
-
 import processing.core.PApplet;
-import processing.data.Table;
-import processing.data.TableRow;
+
 
 public class ScoreDisplay extends PApplet
 {
@@ -18,18 +15,24 @@ public class ScoreDisplay extends PApplet
 
 	public void printScore()
     {
+		String which;
         for(Note n: note)
         {
-            println(n);
+			if(n.getDuration() == 2)
+			{
+				which = "Crotchet";
+			}
+			else
+			{
+				which = "Quaver";
+			}
+            println(n.getNote()+ " " + n.getDuration()+" " + which);
         }
     }
 
 	public void loadScore()
-	{
-		for (int i = 0; i <= score.length(); i++)
-		{
-			note[i] = score.charAt(i);
-		}
+	{	
+	
 	}
 
 	public void settings()
@@ -60,14 +63,27 @@ public class ScoreDisplay extends PApplet
 		}
 	}
 
+	public void drawScore()
+	{
+		float border = width * 0.15f;
+		textAlign(CENTER,CENTER);
+		for ( int i = 0; i < score.length();i++)
+		{
+			float x = map(i, -3, 0, border, height - border - 40);
+			fill(0);
+			text(score.substring(i, i+1),x, border);
+		}
+	}
+
 	public void draw()
 	{
 		background(255);
 		drawLines();
+		drawScore();
 		
 	}
 
-	void drawNotes()
-	{
+	void drawNotes(){
+
 	}
 }
