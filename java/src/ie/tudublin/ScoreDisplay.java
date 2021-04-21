@@ -15,18 +15,16 @@ public class ScoreDisplay extends PApplet
 
 	public void printScore()
     {
-		String which;
         for(Note n: note)
         {
 			if(n.getDuration() == 2)
 			{
-				which = "Crotchet";
+				println(n.getNote()+ " " + n.getDuration()+" " + "Crotchet");
 			}
 			else
 			{
-				which = "Quaver";
+				println(n.getNote()+ " " + n.getDuration()+" " + " Quaver");
 			}
-            println(n.getNote()+ " " + n.getDuration()+" " + which);
         }
     }
 
@@ -81,10 +79,9 @@ public class ScoreDisplay extends PApplet
 	public void drawScore()
 	{
 		float border = width * 0.15f;
-		textAlign(CENTER,CENTER);
 		for ( int i = 0; i < size;i++)
 		{
-			float x = map(i, -3, 0, border, height - border - 40);
+			float x = map(i, -3, 3, border, height - border - 40);
 			fill(0);
 			text(score.substring(i, i+1),x, border);
 		}
@@ -99,6 +96,12 @@ public class ScoreDisplay extends PApplet
 	}
 
 	void drawNotes(){
-
+		int i = 0;
+		float xborder = width * 0.15f;
+		for ( Note n : note)
+		{
+			char c = n.getNote();
+			float x = map(i,0,note.size(),xborder, width - xborder);
+		}
 	}
 }
