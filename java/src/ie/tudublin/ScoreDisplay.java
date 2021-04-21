@@ -32,13 +32,28 @@ public class ScoreDisplay extends PApplet
 
 	public void loadScore()
 	{	
-	
+		for ( int i = 0 ; i < size ; i++)
+		{
+			char cNote = score.charAt(i);
+			int currDur;
+
+			if(i < size - 1 && Character.isDigit(score.charAt(i+1)) == true)
+			{
+				currDur = 2;
+			}
+			else
+			{
+				currDur = 1;
+			}
+			Note n = new Note(cNote,currDur);
+			note.add(n);
+		}
+		
 	}
 
 	public void settings()
 	{
 		size(1000, 500);
-
 		// How to convert a character to a number
 		char c = '7'; // c holds the character 7 (55)
 		int i = c - '0'; // i holds the number 7 (55 - 48) 
@@ -67,7 +82,7 @@ public class ScoreDisplay extends PApplet
 	{
 		float border = width * 0.15f;
 		textAlign(CENTER,CENTER);
-		for ( int i = 0; i < score.length();i++)
+		for ( int i = 0; i < size;i++)
 		{
 			float x = map(i, -3, 0, border, height - border - 40);
 			fill(0);
