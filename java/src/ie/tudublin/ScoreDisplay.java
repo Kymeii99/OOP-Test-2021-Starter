@@ -17,6 +17,7 @@ public class ScoreDisplay extends PApplet
     {
         for(Note n: note)
         {
+			//If Statement to check the code
 			if(n.getDuration() == 2)
 			{
 				println(n.getNote()+ " " + n.getDuration()+" " + "Crotchet");
@@ -92,16 +93,22 @@ public class ScoreDisplay extends PApplet
 		background(255);
 		drawLines();
 		drawScore();
+		drawNotes();
 		
 	}
 
 	void drawNotes(){
-		int i = 0;
-		float xborder = width * 0.15f;
-		for ( Note n : note)
+		float border = width * 0.15f;
+		float halfHeight = height / 2;
+		int position = 0;
+
+		for ( int i = 0; i < size;i++)
 		{
-			char c = n.getNote();
-			float x = map(i,0,note.size(),xborder, width - xborder);
+			//float x = map(i, -5, 5, xborder, height - xborder - 40);
+			float y = map(i, 0, 2, border, height/2);
+			fill(0);
+			line(y + 10, halfHeight - 40,y + 10, halfHeight);
+			ellipse(y, height /2  , 20, 20);
 		}
 	}
 }
