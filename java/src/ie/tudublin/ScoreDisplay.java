@@ -17,7 +17,7 @@ public class ScoreDisplay extends PApplet
     {
         for(Note n: note)
         {
-			//If Statement to check the code
+			//If Statement to check the if its a Crotchet or Quaver
 			if(n.getDuration() == 2)
 			{
 				println(n.getNote()+ " " + n.getDuration()+" " + "Crotchet");
@@ -36,7 +36,7 @@ public class ScoreDisplay extends PApplet
 			char cNote = score.charAt(i);
 			int currDur;
 
-			if(i < size - 1 && Character.isDigit(score.charAt(i+1)) == true)
+			if(i < size - 1 && Character.isDigit(score.charAt(i+1)))
 			{
 				currDur = 2;
 			}
@@ -110,5 +110,10 @@ public class ScoreDisplay extends PApplet
 			line(y + 10, halfHeight - 40,y + 10, halfHeight);
 			ellipse(y, height /2  , 20, 20);
 		}
+	}
+
+	void mouseHover()
+	{
+
 	}
 }
